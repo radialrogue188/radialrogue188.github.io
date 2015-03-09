@@ -87,70 +87,90 @@ document.forms.guessquiz.prompt.value=speech; document.forms.guessquiz.guess.foc
 
 
 
-<SCRIPT LANGUAGE="JavaScript">
-<!-- ;
-// numberguess is by Lancer - written 4 Jan 1999
-// lancer@kp.planet.gen.nz
+<table border="0" bgcolor="#000000" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="100%">
+<p>Crystal Ball</p>
 
-var guessme=Math.round(Math.random()*(99)+1);
-var speech='Guess my number (from 1 to 100)';
+<p>Please enter a yes/no question and it will respond</p>
+<p>Warning: the crystal ball has a tendency to be sarcastic!</p>
+<table width="40%" border="0">
+<tr>
+<td>
+<form name="input1" method="post">
+<input name="textfield" size=63>
+</form>
+</td>
+</tr>
+</table>
+<table width="8%" border="0">
+<tr>
+<td>
+<form method="post">
+<input type="button" name="button1" value="Ask Me!"
+onClick="getAnswers()">
+</form>
+</td>
+</tr>
+</table>
 
-function process(mystery) {
-var guess=document.forms.guessquiz.guess.value;
-var speech='"'+guess+ '" does not make sense to me.';
-document.forms.guessquiz.guess.value='';
+<script language="JavaScript">
 
-if (guess==mystery)
-{
-document.forms.guessquiz.prompt.value='Congratulations! '+mystery+' is correct!';
-alert ('Well done - the mystery number is '+mystery+'! \n\nPress this button to reload the page for another game.');
-speech='';
-document.location=document.location;
+//Crystal Ball Script - By Michael McDermott (mcdemf1@wfu.edu)
+//http://www.wfu.edu/~mcdemf1
+//Visit JavaScript Kit (http://javascriptkit.com) for script
+
+
+function getAnswers() {
+
+time = new Date()
+randominteger = time.getSeconds()
+
+if (document.input1.textfield.value == "") { 
+alert("You dummy! You didn't enter anything into the Crystal Ball!!!")
+return
 }
 
-if (mystery<guess)
-{
-speech='Less than '+ guess;
+if (randominteger <= 3) answer="Did you really think so? Hahaha, I'm laughing now at your pitiful chances."
+if ((randominteger >= 4) && (randominteger <= 6)) answer ="Yeah, it it's got a 65% chance of happening."
+if ((randominteger >= 7) && (randominteger <= 9)) answer ="Oh come on! No way!"
+if ((randominteger >= 10) && (randominteger <= 12)) answer ="As sure as I'm made of glass, this is likely to happen."
+if ((randominteger >= 13) && (randominteger <= 15)) answer ="Why are you asking A CRYSTAL BALL? Do you really believe the answers?"
+if ((randominteger >= 16) && (randominteger <= 18)) answer ="Give me a break, give me a break, break me off a piece of that NO!"
+if ((randominteger >= 19) && (randominteger <= 21)) answer ="Good chances lie on the horizon."
+if ((randominteger >= 22) && (randominteger <= 24)) answer ="Ask me again, I am restless and overworked."
+if ((randominteger >= 25) && (randominteger <= 27)) answer ="Do you know how the Crystal Ball works? There's your answer."
+if ((randominteger >= 28) && (randominteger <= 30)) answer ="As the sun is hot, your answer is YES."
+if ((randominteger >= 31) && (randominteger <= 33)) answer ="Did you get drunk last weekend? There's your answer."
+if ((randominteger >= 34) && (randominteger <= 36)) answer ="Forget about it"
+if ((randominteger >= 37) && (randominteger <= 39)) answer ="Yeah, it could happen. 80% chance."
+if ((randominteger >= 40) && (randominteger <= 42)) answer ="Hitler has a better chance of raising from the dead."
+if ((randominteger >= 43) && (randominteger <= 45)) answer ="If you really think so, then it shall be."
+if ((randominteger >= 46) && (randominteger <= 48)) answer ="Who said ambiguous answers were bad? Not me, so YES!"
+if ((randominteger >= 49) && (randominteger <= 51)) answer ="You think I'm going to answer that after a day of hard work? Ask again later."
+if ((randominteger >= 52) && (randominteger <= 54)) answer ="If you own a pet, yes. Otherwise, no."
+if ((randominteger >= 55) && (randominteger <= 57)) answer ="The sun will rise in the east and set in the west. Thank you Captain Obvious. YES!"
+if ((randominteger >= 58) && (randominteger <= 60)) answer ="I'm laughing hard, very hard. You'd better ask again."
+
+var newWindow = window.open("","Results","width=300,height=300")
+newWindow.document.write("<html><body bgcolor='#000000' text='#FFFFCC' link='#00FFFF' alink='#000066' vlink='#6666FF'>")
+newWindow.document.write("<P align='center'>Your Question:</P><P></P>")
+newWindow.document.write("<P align='center'>" + document.input1.textfield.value + "</P>")
+newWindow.document.write("<P></P><P></P><P></P><P align='center'>The Great Crystal Ball Has Answered:</P><P></P>")
+newWindow.document.write("")
+newWindow.document.write("<P align='center'>" + answer + "</P>")
+newWindow.document.write("<P></P><P></P><P align='center'><A HREF='javascript:window.close()'>Close Me</A></P>")
 }
 
-if (mystery>guess)
-{
-speech='Greater than '+ guess;
-}
+</script>
 
-if (guess=='')
-{
-speech='You didn\'t guess anything!'
-}
+</td>
+  </tr>
+</table>
 
-document.forms.guessquiz.prompt.value=speech; document.forms.guessquiz.guess.focus();
-
-}
-
-// end hide -->
-</SCRIPT>
-
-<FORM onSubmit="" NAME="guessquiz">
-<CENTER>
-<TABLE ALIGN="CENTER" BGCOLOR="#888888" BORDER="3" CELLPADDING="5">
-<TR>
-<TD BGCOLOR="#004080">
-<FONT COLOR="#ffffff" FACE="Arial"><B>GUESS MY NUMBER (1 - 100)</B></FONT>
-</TD>
-</TR>
-<TR>
-<TD>
-<CENTER>
-<INPUT TYPE="text" NAME="prompt" SIZE="31" MAXLENGTH="40" VALUE="Guess my number (from 1 to 100)"><BR>
-<INPUT TYPE="text" NAME="guess" SIZE="3" MAXLENGTH="3" VALUE="">
-<INPUT TYPE="button" VALUE="Guess" onClick='process(guessme)'>
-</CENTER>
-</TD>
-</TR>
-</TABLE>
-</CENTER>
-</FORM>
-
+<p align="center">This free script provided by<br />
+<a href="http://javascriptkit.com">JavaScript
+Kit</a></p>
 
       </section>
     </div>
